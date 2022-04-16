@@ -1,0 +1,18 @@
+h3{
+font-size: 32px;
+font-weight: 400;
+color: black;
+margin: 0 0 10px 0;
+}
+.product-item{
+width: 600px;
+height: 600px;
+text-align: center;
+margin: 0 auto;
+border-bottom: 2px solid #F5F5F5;
+background: white;
+margin-left: 0px;
+}
+tr{
+height: 1200px;
+}
