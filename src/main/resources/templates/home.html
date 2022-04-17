@@ -23,75 +23,30 @@
         Sales hits
     </h1>
 </div>
-<div th:each="type: ${types}">
-
-</div>
 <table class = "table table-striped" style="margin-left:70px;">
     <tr>
-        <th>
+        <td th:each="prod: ${products}">
             <div class="product-item">
-                <img src="images/1.png" style="display: block; width: 100%;">
+                <img th:src="@{'images/'+${prod.image}}" style="display: block; width: 100%;">
                 <div class="product-list">
-                    <h3></h3>
-                    <span class="price"></span>
+                    <h3 th:text="${prod.name}"></h3>
+                    <span class="price" th:text="'$' + ${prod.price}"></span>
                     <div class="crossed"><a href="#" class="crossed-link" title="">Put in bag</a></div>
                 </div>
             </div>
-        </th>
-        <th>
-            <div class="product-item">
-                <img src="images/1.png" style="display: block; width: 100%;">
-                <div class="product-list">
-                    <h3>Маленькое черное платье</h3>
-                    <span class="price">40$</span>
-                    <div class="crossed"><a href="#" class="crossed-link" title="">Put in bag</a></div>
-                </div>
-            </div>
-        </div>
-        </th>
-        <th>
-            <div class="product-item">
-                <img src="images/1.png" style="display: block; width: 100%;">
-                <div class="product-list">
-                    <h3>Маленькое черное платье</h3>
-                    <span class="price">40$</span>
-                    <div class="crossed"><a href="#" class="crossed-link" title="">Put in bag</a></div>
-                </div>
-            </div>
-        </th>
+        </td>
     </tr>
-
     <tr>
-        <th>
+        <td th:each="prod2: ${products2}">
             <div class="product-item">
-                <img src="images/1.png" style="display: block; width: 100%;">
+                <img th:src="@{'images/'+${prod2.image}}" style="display: block; width: 100%;">
                 <div class="product-list">
-                    <h3>Маленькое черное платье</h3>
-                    <span class="price">40$</span>
+                    <h3 th:text="${prod2.name}"></h3>
+                    <span class="price" th:text="'$' + ${prod2.price}"></span>
                     <div class="crossed"><a href="#" class="crossed-link" title="">Put in bag</a></div>
                 </div>
             </div>
-        </th>
-        <th>
-            <div class="product-item">
-                <img src="images/1.png" style="display: block; width: 100%;">
-                <div class="product-list">
-                    <h3>Маленькое черное платье</h3>
-                    <span class="price">40$</span>
-                    <div class="crossed"><a href="#" class="crossed-link" title="">Put in bag</a></div>
-                </div>
-            </div>
-        </th>
-        <th>
-            <div class="product-item">
-                <img src="images/1.png" style="display: block; width: 100%;">
-                <div class="product-list">
-                    <h3>Маленькое черное платье</h3>
-                    <span class="price">40$</span>
-                    <div class="crossed"><a href="#" class="crossed-link" title="">Put in bag</a></div>
-                </div>
-            </div>
-        </th>
+        </td>
     </tr>
 </table>
 </body>
