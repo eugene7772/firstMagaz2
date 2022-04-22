@@ -1,4 +1,6 @@
-package com.magaz2.firstMagaz2.controllers;
+package com.magaz2.firstMagaz2.Entity;
+
+import com.magaz2.firstMagaz2.Entity.ProductType;
 
 import javax.persistence.*;
 
@@ -8,28 +10,23 @@ import javax.persistence.*;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JoinColumn(name = "id_prod")
     private Long id;
+
     private String name;
+
     private Double price;
+
     private String image;
+
     private String description;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_type_id")
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_type")
     private ProductType productType;
 
     public Product() {
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                ", productType=" + productType +
-                '}';
     }
 
     public Product(Long id, String name, Double price, String image, String description, ProductType productType) {
@@ -87,5 +84,17 @@ public class Product {
 
     public void setProductType(ProductType productType) {
         this.productType = productType;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", productType=" + productType +
+                '}';
     }
 }

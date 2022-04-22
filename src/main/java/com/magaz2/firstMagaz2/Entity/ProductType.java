@@ -1,4 +1,4 @@
-package com.magaz2.firstMagaz2.controllers;
+package com.magaz2.firstMagaz2.Entity;
 
 import javax.persistence.*;
 
@@ -6,6 +6,8 @@ import javax.persistence.*;
 @Table(name = "product_type")
 public class ProductType {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_type")
     private Long id;
     private String name;
 
