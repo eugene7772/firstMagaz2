@@ -3,6 +3,7 @@ package com.magaz2.firstMagaz2.controllers;
 import com.magaz2.firstMagaz2.Entity.Product;
 import com.magaz2.firstMagaz2.Entity.ProductType;
 import com.magaz2.firstMagaz2.globalData.ProductDTO;
+import com.magaz2.firstMagaz2.service.BrandService;
 import com.magaz2.firstMagaz2.service.ProductService;
 import com.magaz2.firstMagaz2.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class AdminController {
 
     @Autowired
     ProductService productService;
+
+   @Autowired
+    BrandService brandService;
+
 
     @GetMapping("/admin")
     public String adminHome(){
@@ -72,6 +77,7 @@ public class AdminController {
     public String productAddGet(Model model){
         model.addAttribute("productDTO",new ProductDTO());
         model.addAttribute("productTypes", productTypeService.getAllproductType());
+        model.addAttribute("brands", brandService.getAllBrands());
         return "productsAdd";
     }
     @PostMapping("/admin/products/add")
@@ -93,6 +99,7 @@ public class AdminController {
             imageUUID = image;
         }
         product.setImage(imageUUID);
+        product.setBrand(brandService.getBrandById(productDTO.getBrandId()).get());
         productService.addProduct(product);
 
         return "redirect:/admin/products";
@@ -109,6 +116,7 @@ public class AdminController {
         ProductDTO productDTO = new ProductDTO();
         productDTO.setId(product.getId());
         productDTO.setName(product.getName());
+        productDTO.setBrandId(product.getBrand().getId());
         productDTO.setProductTypeId(product.getProductType().getId());
         productDTO.setPrice(product.getPrice());
         productDTO.setDescription(product.getDescription());

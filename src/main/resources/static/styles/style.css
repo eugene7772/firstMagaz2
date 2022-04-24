@@ -87,3 +87,15 @@ div.crossed:hover a.crossed-link:before {
   transform: translateY(0);
   }
 }
+aside{
+background:green;
+order:2;
+width:50%;
+min-height:calc(100vh - 200px);
+}
+article{
+width:50%;
+background:blue;
+order:3;
+}
+

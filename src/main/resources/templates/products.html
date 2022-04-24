@@ -44,6 +44,7 @@
             <th scope="col">Id</th>
             <th scope="col">Product Name</th>
             <th scope="col">Category</th>
+            <th scope="col">Brand</th>
             <th scope="col">Preview</th>
             <th scope="col">Delete</th>
             <th scope="col">Update</th>
@@ -55,6 +56,7 @@
             <th scope="row" th:text="${product.id}"></th>
             <td th:text="${product.name}">Larry</td>
             <td th:text="${product.productType.name}">Larry</td>
+            <td th:text="${product.brand.name}">Larry</td>
             <td>
                 <img src="" height="25%" width="25%"  th:src="@{${'/images/' + product.image}}">
             </td>

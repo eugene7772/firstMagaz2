@@ -70,6 +70,15 @@
                     <label for="description">Product Description</label>
                     <textarea class="form-control" rows="5" th:field="*{description}" name="description" id="description"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="brandId">Select Brand</label>
+                    <select class="form-control" th:field="*{brandId}" id="brandId" name="brandId">
+                        <option th:each="brand :${brands}"
+                                th:value="${brand.id}"
+                                th:text="${brand.name}"
+                        >
+                    </select>
+                </div>
             </div>
             <div class="col-sm-5">
                 <p>Product Image</p>

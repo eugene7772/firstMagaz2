@@ -14,6 +14,7 @@ public class ProductDTO {
     private String image;
     private String description;
     private Long productTypeId;
+    private Long brandId;
 
     public void setId(Long id) {
         this.id = id;
@@ -61,5 +62,13 @@ public class ProductDTO {
 
     public Long getProductTypeId() {
         return productTypeId;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 }

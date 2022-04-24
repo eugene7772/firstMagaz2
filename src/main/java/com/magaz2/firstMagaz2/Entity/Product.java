@@ -26,6 +26,11 @@ public class Product {
     @JoinColumn(name = "id_type")
     private ProductType productType;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_brand")
+    private Brand brand;
+
+
     public Product() {
     }
 
@@ -86,15 +91,12 @@ public class Product {
         this.productType = productType;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                ", productType=" + productType +
-                '}';
+    public Brand getBrand() {
+        return brand;
     }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
 }
