@@ -82,6 +82,14 @@ public class User {
         this.roles = roles;
     }
 
+    public User(String firstName, String lastName, String password, String phoneClient, String nameState) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.phoneClient = phoneClient;
+        this.nameState = nameState;
+    }
+
     public User(){
 
     }
