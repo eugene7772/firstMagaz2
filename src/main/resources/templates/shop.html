@@ -23,6 +23,7 @@
         <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" href="/shop">Shop</a></div>
         <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a></div>
         <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a></div>
+        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAuthenticated()" th:href="@{/account}" href="#">My account</a></div>
         <div  class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" th:href="@{/cart}" href="#">cart</a></div>
         <div  class="crossed"><span class="crossed-link" th:text="${cartCount}">0</span></div>
     </nav>
