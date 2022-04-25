@@ -28,6 +28,12 @@ public class User {
 
     private String password;
 
+    private String phoneClient;
+
+    private Integer percentSale;
+
+    private String nameState;
+
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name="user_role",
@@ -44,8 +50,64 @@ public class User {
         this.roles = user.getRoles();
     }
 
+    public User(String firstName, String lastName, String email, String password, String phoneClient, List<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneClient = phoneClient;
+        this.roles = roles;
+    }
+
+
+
+    public User(String firstName, String lastName, String email, String password, String phoneClient, Integer percentSale, List<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneClient = phoneClient;
+        this.percentSale = percentSale;
+        this.roles = roles;
+    }
+
+    public User(String firstName, String lastName, String email, String password, String phoneClient, Integer percentSale, String nameState, List<Role> roles) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneClient = phoneClient;
+        this.percentSale = percentSale;
+        this.nameState = nameState;
+        this.roles = roles;
+    }
+
     public User(){
 
+    }
+
+    public String getNameState() {
+        return nameState;
+    }
+
+    public void setNameState(String nameState) {
+        this.nameState = nameState;
+    }
+
+    public Integer getPercentSale() {
+        return percentSale;
+    }
+
+    public void setPercentSale(Integer percentSale) {
+        this.percentSale = percentSale;
+    }
+
+    public String getPhoneClient() {
+        return phoneClient;
+    }
+
+    public void setPhoneClient(String phoneClient) {
+        this.phoneClient = phoneClient;
     }
 
     public String getFirstName() {
