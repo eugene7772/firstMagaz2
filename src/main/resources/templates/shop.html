@@ -36,16 +36,16 @@
             <ul class="list-group">
                 <a th:href="@{/shop}"><li class="list-group-item">All Products</li></a>
                 <a href="" th:each="prod, iStat : ${productTypes}"
-                   th:href="@{/shop/category/{id}(id=${prod.id})}"><li
+                   th:href="@{/shop/search/{id}(id=${prod.id})}"><li
                                class="list-group-item" th:text="${prod.name}"></li></a>
             </ul>
         </div>
         <div class="col-sm-5">
-            <h4>Categories</h4>
+            <h4>Brands</h4>
             <ul class="list-group">
-                <a th:href="@{/shop}"><li class="list-group-item">All Products</li></a>
+                <a th:href="@{/shop}"><li class="list-group-item">All Brands</li></a>
                 <a href="" th:each="brand, iStat : ${brands}"
-                   th:href="@{/shop/category/{id}(id=${brand.id})}"><li
+                   th:href="@{/shop/search/{id}(id=${brand.id})}"><li
                         class="list-group-item" th:text="${brand.name}"></li></a>
             </ul>
         </div>
@@ -58,9 +58,28 @@
                     <div class="col-sm-7 d-flex justify-content-center">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}"></h5>
+                            <p th:text="${product.brand.name}"></p>
                             <h4>$<span th:text="${product.price}"></span></h4>
                             <p th:text="${product.description}" ></p>
                             <div class="crossed"><a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="crossed-link">View Product</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="card" style="margin-top: 20px" th:each="product2 : ${products2}">
+                <div class="row no-gutters">
+                    <div class="col-sm-5 d-flex justify-content-center">
+                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product2.image}}" th:alt="${product2.name}">
+                    </div>
+                    <div class="col-sm-7 d-flex justify-content-center">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product2.name}"></h5>
+                            <p th:text="${product2.brand.name}"></p>
+                            <h4>$<span th:text="${product2.price}"></span></h4>
+                            <p th:text="${product2.description}" ></p>
+                            <div class="crossed"><a href="#" th:href="@{/shop/viewproduct/{id}(id=${product2.id})}" class="crossed-link">View Product</a></div>
                         </div>
                     </div>
                 </div>

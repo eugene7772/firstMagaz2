@@ -34,12 +34,14 @@ public class ShopController {
         model.addAttribute("cartCount", GlobalCart.cart.size());
         return "shop";
     }
-    @GetMapping("/shop/category/{id}")
+    @GetMapping("/shop/search/{id}")
     public String ShopByProductType(Model model, @PathVariable Long id){
+        Iterable<Brand> brands = brandService.getAllBrands();
+        model.addAttribute("brands", brands);
+        model.addAttribute("products2",productService.getAllProductsByBrandId(id));
         model.addAttribute("productTypes", productTypeService.getAllproductType());
         model.addAttribute("products",productService.getAllProductsByProductTypeId(id));
         model.addAttribute("cartCount", GlobalCart.cart.size());
-        model.addAttribute("brands", brandService.getAllBrands());
         return "shop";
     }
     @GetMapping("/shop/viewproduct/{id}")

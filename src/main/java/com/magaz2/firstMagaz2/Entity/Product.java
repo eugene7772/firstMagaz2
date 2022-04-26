@@ -43,6 +43,16 @@ public class Product {
         this.productType = productType;
     }
 
+    public Product(Long id, String name, Double price, String image, String description, ProductType productType, Brand brand) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.productType = productType;
+        this.brand = brand;
+    }
+
     public Long getId() {
         return id;
     }
@@ -99,4 +109,16 @@ public class Product {
         this.brand = brand;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", productType=" + productType +
+                ", brand=" + brand +
+                '}';
+    }
 }
