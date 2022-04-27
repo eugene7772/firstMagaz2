@@ -43,7 +43,6 @@
         <div class="col-sm-5">
             <h4>Brands</h4>
             <ul class="list-group">
-                <a th:href="@{/shop}"><li class="list-group-item">All Brands</li></a>
                 <a href="" th:each="brand, iStat : ${brands}"
                    th:href="@{/shop/search/{id}(id=${brand.id})}"><li
                         class="list-group-item" th:text="${brand.name}"></li></a>
