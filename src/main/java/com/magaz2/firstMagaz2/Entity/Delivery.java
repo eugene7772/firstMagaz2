@@ -13,7 +13,7 @@ public class Delivery {
     private Long id;
 
     @JoinColumn(name = "date_delivery")
-    private Date date;
+    private String date;
 
     @JoinColumn(name = "price_delivery")
     private Integer price;
@@ -22,7 +22,7 @@ public class Delivery {
     @JoinColumn(name = "id_point_of_issue")
     private PointOfIssue pointOfIssue;
 
-    public Delivery(Long id, Date date, Integer price, PointOfIssue pointOfIssue) {
+    public Delivery(Long id, String date, Integer price, PointOfIssue pointOfIssue) {
         this.id = id;
         this.date = date;
         this.price = price;
@@ -40,11 +40,11 @@ public class Delivery {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -68,7 +68,7 @@ public class Delivery {
     public String toString() {
         return "Delivery{" +
                 "id=" + id +
-                ", date=" + date +
+                ", date='" + date + '\'' +
                 ", price=" + price +
                 ", pointOfIssue=" + pointOfIssue +
                 '}';

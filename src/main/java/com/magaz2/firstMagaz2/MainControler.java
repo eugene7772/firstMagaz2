@@ -27,28 +27,26 @@ public class MainControler {
         Comparator<Product> comparator = Comparator.comparing(obj->obj.getId());
 
         List<Product> products = productRepository.findAll();
+        List<Product> products2 = productRepository.findAll();
         Collections.sort(products,comparator);
-        if(!products.isEmpty()) {
-            if (products.size() >= 3) {
-                products.subList(3, products.size()).clear();
+        Collections.sort(products2,comparator);
+        if(!products2.isEmpty()) {
+            if (products2.size() >= 3) {
+                products2.subList(3, products.size()).clear();
             }
         }
-        List<Product> products2 = productRepository.findAll();
-        Collections.sort(products2,comparator);
             if (products.size() >= 6) {
-                products2.subList(6, products2.size()).clear();
-                products2.subList(0, 3).clear();
+                products.subList(38, products.size()).clear();
+                products.subList(0, 35).clear();
             }
         Map<ProductType, List<Product>> map = new HashMap<>();
         types.forEach(type->map.put(type, productRepository.findByProductType(type)));
 
-        Integer quantity = 1;
 
         model.addAttribute("map",map);
         model.addAttribute("types",types);
         model.addAttribute("products", products);
         model.addAttribute("products2", products2);
-        model.addAttribute("quantity",quantity);
         return "home";
     }
     @GetMapping("/login")

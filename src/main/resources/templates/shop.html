@@ -10,75 +10,103 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="authenticated">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
-    <title>Shop</title>
+    <title>Магазин</title>
 </head>
 <body>
 
 <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom" style="background: #F5F5F5;">
     <a style="font-style: italic;font-size: 50px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" href="/">StonX</a>
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" th:href="@{/}" href="#">home</a></div>
-        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" href="/shop">Shop</a></div>
-        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a></div>
-        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a></div>
-        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAuthenticated()" th:href="@{/account}" href="#">My account</a></div>
-        <div  class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" th:href="@{/cart}" href="#">cart</a></div>
+        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Войти</a></div>
+        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAuthenticated()" th:href="@{/account}" href="#">Мой аккаунт</a></div>
+        <div  class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" th:href="@{/cart}" href="#">Корзина</a></div>
         <div  class="crossed"><span class="crossed-link" th:text="${cartCount}">0</span></div>
+        <div class="crossed"><a class="crossed-link" style="font-style: italic;font-size: 25px; color: black; text-decoration: none; margin-left: 70px; font-family: ‘Open Sans’;" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Выйти</a></div>
     </nav>
 </div>
 
 <div class="aside" style="margin-top: 30px">
     <div class="row">
-        <div class="col-sm-3">
-            <h4>Categories</h4>
+        <div class="col-sm-3" style="margin-left:250px">
+            <h4>Категории</h4>
             <ul class="list-group">
-                <a th:href="@{/shop}"><li class="list-group-item">All Products</li></a>
-                <a href="" th:each="prod, iStat : ${productTypes}"
+                <a class="crossed-link" style="font-style: italic;font-size: 20px; color: black; text-decoration: none; font-family: ‘Open Sans’;" th:href="@{/shop}"><li class="list-group-item">Все товары</li></a>
+                <a class="crossed-link" style="font-style: italic;font-size: 20px; color: black; text-decoration: none; font-family: ‘Open Sans’;" href="" th:each="prod, iStat : ${productTypes}"
                    th:href="@{/shop/search/{id}(id=${prod.id})}"><li
                                class="list-group-item" th:text="${prod.name}"></li></a>
             </ul>
-        </div>
         <div class="col-sm-5">
-            <h4>Brands</h4>
+            <h4>Бренды</h4>
             <ul class="list-group">
-                <a href="" th:each="brand, iStat : ${brands}"
+                <a class="crossed-link" style="font-style: italic;font-size: 20px; color: black; text-decoration: none; font-family: ‘Open Sans’;" href="" th:each="brand, iStat : ${brands}"
                    th:href="@{/shop/search/{id}(id=${brand.id})}"><li
                         class="list-group-item" th:text="${brand.name}"></li></a>
             </ul>
         </div>
-        <div class="col-sm-9">
+        </div>
+        <div class="col-sm-3 pt-3" >
             <div class="card" style="margin-top: 20px" th:each="product : ${products}">
                 <div class="row no-gutters">
                     <div class="col-sm-5 d-flex justify-content-center">
-                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product.image}}" th:alt="${product.name}">
+                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product.image}}">
                     </div>
                     <div class="col-sm-7 d-flex justify-content-center">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}"></h5>
                             <p th:text="${product.brand.name}"></p>
-                            <h4>$<span th:text="${product.price}"></span></h4>
-                            <p th:text="${product.description}" ></p>
-                            <div class="crossed"><a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="crossed-link">View Product</a></div>
+                            <h4><span th:text="${product.price}"></span> ₽</h4>
+                            <div><a  class="crossed-link" style="font-style: italic;font-size: 20x; color: black; text-decoration: none; font-family: ‘Open Sans’;" href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}">Просмотр товара</a></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-9">
             <div class="card" style="margin-top: 20px" th:each="product2 : ${products2}">
                 <div class="row no-gutters">
                     <div class="col-sm-5 d-flex justify-content-center">
-                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product2.image}}" th:alt="${product2.name}">
+                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product2.image}}">
                     </div>
                     <div class="col-sm-7 d-flex justify-content-center">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product2.name}"></h5>
                             <p th:text="${product2.brand.name}"></p>
-                            <h4>$<span th:text="${product2.price}"></span></h4>
-                            <p th:text="${product2.description}" ></p>
-                            <div class="crossed"><a href="#" th:href="@{/shop/viewproduct/{id}(id=${product2.id})}" class="crossed-link">View Product</a></div>
+                            <h4><span th:text="${product2.price}"></span> ₽</h4>
+                            <div><a  class="crossed-link" style="font-style: italic;font-size: 20px; color: black; text-decoration: none; font-family: ‘Open Sans’;" href="#" th:href="@{/shop/viewproduct/{id}(id=${product2.id})}">Просмотр товара</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 pt-3" >
+            <div class="card" style="margin-top: 20px" th:each="product3 : ${products3}">
+                <div class="row no-gutters">
+                    <div class="col-sm-5 d-flex justify-content-center">
+                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product3.image}}">
+                    </div>
+                    <div class="col-sm-7 d-flex justify-content-center">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product3.name}"></h5>
+                            <p th:text="${product3.brand.name}"></p>
+                            <h4><span th:text="${product3.price}"></span> ₽</h4>
+                            <div><a  class="crossed-link" style="font-style: italic;font-size: 20px; color: black; text-decoration: none; font-family: ‘Open Sans’;" href="#" th:href="@{/shop/viewproduct/{id}(id=${product3.id})}">Просмотр товара</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 20px" th:each="product4 : ${products4}">
+                <div class="row no-gutters">
+                    <div class="col-sm-5 d-flex justify-content-center">
+                        <img class="" height="100%" width="100%" th:src="@{${'/images/' + product4.image}}">
+                    </div>
+                    <div class="col-sm-7 d-flex justify-content-center">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product4.name}"></h5>
+                            <p th:text="${product4.brand.name}"></p>
+                            <h4><span th:text="${product4.price}"></span> ₽</h4>
+                            <div><a  class="crossed-link" style="font-style: italic;font-size: 20px; color: black; text-decoration: none; font-family: ‘Open Sans’;" href="#" th:href="@{/shop/viewproduct/{id}(id=${product4.id})}">Просмотр товара</a></div>
                         </div>
                     </div>
                 </div>

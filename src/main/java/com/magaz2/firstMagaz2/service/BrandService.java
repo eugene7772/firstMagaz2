@@ -19,5 +19,10 @@ public class BrandService {
     public Optional<Brand> getBrandById(Long id){
         return brandRepository.findById(id);
     }
-
+    public void addBrand(Brand brand){
+        brandRepository.save(brand);
+    }
+    public void removeBrandId(Long id){
+        brandRepository.deleteById(id);
+    }
 }

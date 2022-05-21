@@ -14,12 +14,9 @@ public class OrderStatus {
     @JoinColumn(name = "name_status")
     private String name;
 
-    private String location;
-
-    public OrderStatus(Long id, String name, String location) {
+    public OrderStatus(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.location = location;
     }
 
     public OrderStatus() {
@@ -41,20 +38,11 @@ public class OrderStatus {
         this.name = name;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     @Override
     public String toString() {
         return "OrderStatus{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", location='" + location + '\'' +
                 '}';
     }
 }

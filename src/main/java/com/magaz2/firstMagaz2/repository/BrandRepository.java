@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Qualifier("brandRepository")
 @Repository
 public interface BrandRepository extends CrudRepository<Brand, Long> {
+
 }

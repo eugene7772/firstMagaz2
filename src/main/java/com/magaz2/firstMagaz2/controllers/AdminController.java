@@ -1,9 +1,12 @@
 package com.magaz2.firstMagaz2.controllers;
 
+import com.magaz2.firstMagaz2.Entity.Brand;
+import com.magaz2.firstMagaz2.Entity.Order;
 import com.magaz2.firstMagaz2.Entity.Product;
 import com.magaz2.firstMagaz2.Entity.ProductType;
 import com.magaz2.firstMagaz2.globalData.ProductDTO;
 import com.magaz2.firstMagaz2.service.BrandService;
+import com.magaz2.firstMagaz2.service.OrderService;
 import com.magaz2.firstMagaz2.service.ProductService;
 import com.magaz2.firstMagaz2.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class AdminController {
 
    @Autowired
     BrandService brandService;
+
+   @Autowired
+    OrderService orderService;
 
 
     @GetMapping("/admin")
@@ -122,11 +128,54 @@ public class AdminController {
         productDTO.setDescription(product.getDescription());
         productDTO.setImage(product.getImage());
 
+        Iterable<Brand> brands = brandService.getAllBrands();
+        model.addAttribute("brands",brands);
         model.addAttribute("productTypes", productTypeService.getAllproductType());
         model.addAttribute("productDTO",productDTO);
 
+
         return "productsAdd";
     }
+
+    //Brands
+    @GetMapping("/admin/brands")
+    public String getBrand(Model model){
+            Iterable<Brand> brands = brandService.getAllBrands();
+            model.addAttribute("brands",brands);
+        return "brands";
+    }
+    @GetMapping("/admin/brands/add")
+    public String getBrandAdd(Model model){
+        model.addAttribute("brand",new Brand());
+        return "brandsAdd";
+    }
+    @PostMapping("/admin/brands/add")
+    public String postBrandAdd(@ModelAttribute("brand") Brand brand){
+        brandService.addBrand(brand);
+        return "redirect:/admin/brands";
+    }
+    @GetMapping("/admin/brands/delete/{id}")
+    public String deleteBrand(@PathVariable Long id){
+        brandService.removeBrandId(id);
+        return "redirect:/admin/brands";
+    }
+    @GetMapping("/admin/brands/update/{id}")
+    public String updateBrand(@PathVariable Long id, Model model){
+        Optional<Brand> brand = brandService.getBrandById(id);
+        if(brand.isPresent()){
+            model.addAttribute("brand",brand.get());
+            return "brandsAdd";
+        }else
+            return "404";
+    }
+    //Orders
+    @GetMapping("/admin/orders")
+    public String getOrders(Model model){
+        Iterable<Order> orders = orderService.getAllOrders();
+        model.addAttribute("orders",orders);
+        return "orders";
+    }
+
 }
 
 

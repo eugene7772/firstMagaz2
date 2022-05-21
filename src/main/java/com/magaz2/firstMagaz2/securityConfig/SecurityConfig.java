@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/styles/**").permitAll()
                 .antMatchers("/shop/**").permitAll()
                 .antMatchers("/","shop/**","/register","postgresql-console/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")

@@ -1,7 +1,5 @@
 package com.magaz2.firstMagaz2.Entity;
 
-import com.magaz2.firstMagaz2.Entity.ProductType;
-
 import javax.persistence.*;
 
 
