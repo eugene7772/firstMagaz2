@@ -1,7 +1,6 @@
 package com.magaz2.firstMagaz2.Entity;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

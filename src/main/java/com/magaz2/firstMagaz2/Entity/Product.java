@@ -2,7 +2,6 @@ package com.magaz2.firstMagaz2.Entity;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "product")
 public class Product {
